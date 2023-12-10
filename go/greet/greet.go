@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/andrescosta/wrkl/sdk"
+	"github.com/andrescosta/jobicolet-sdk-go/pkg/sdk"
 )
 
 // main is required for TinyGo to compile to Wasm.
