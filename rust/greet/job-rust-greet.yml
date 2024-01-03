@@ -1,0 +1,23 @@
+name: Demo JOB
+id: rust-demo-job
+tenant: demorust
+queues:
+  - id: queue-default
+    name: Q.Default
+jobs:
+  - event:
+      name: Greet event
+      id: evrust
+      datatype: 0
+      schema:
+        id: greet-event-schema
+        name: Greet's schema
+        schemaref: greet-schema-rust.json
+      supplierqueue: queue-default
+      runtime: greet-event-rust
+runtimes:
+  - id: greet-event-rust
+    name: Greet Evenent Func
+    moduleref: greet-wasm-rust.wasm
+    mainfuncname: event
+    type: 0

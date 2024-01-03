@@ -1,0 +1,23 @@
+name: Demo JOB
+id: go-demo-job
+tenant: demogo
+queues:
+  - id: queue-default
+    name: Q.Default
+jobs:
+  - event:
+      name: Greet event
+      id: evgo
+      datatype: 0
+      schema:
+        id: greet-event-schema
+        name: Greet's schema
+        schemaref: greet-schema-go.json
+      supplierqueue: queue-default
+      runtime: greet-event-go
+runtimes:
+  - id: greet-event-go
+    name: Greet Evenent Func
+    moduleref: greet-wasm-go.wasm
+    mainfuncname: event
+    type: 0

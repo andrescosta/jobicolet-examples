@@ -12,8 +12,9 @@ func _init() {
 	sdk.OnEvent = test
 }
 
-func test(data string) (uint64, string) {
-	sdk.Log(sdk.DebugLevel, data)
-	sdk.Log(sdk.InfoLevel, data)
+func test(id uint32, data string) (uint64, string) {
+	sdk.Log(id, sdk.InfoLevel, "Hello from Tiny GO")
+	sdk.Log(id, sdk.DebugLevel, data)
+	sdk.Log(id, sdk.InfoLevel, data)
 	return sdk.NoError, "ok"
 }
