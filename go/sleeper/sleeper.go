@@ -12,8 +12,8 @@ func _init() {
 	sdk.OnEvent = test
 }
 
-func test(id uint32, data string) (uint64, string) {
-	sdk.Log(id, sdk.InfoLevel, "sleeping")
+func test(data string) (uint64, string) {
+	sdk.Log(sdk.InfoLevel, "sleeping")
 	for {
 	}
 }

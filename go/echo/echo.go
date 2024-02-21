@@ -12,6 +12,7 @@ func _init() {
 	sdk.OnEvent = echo
 }
 
-func echo(id uint32, data string) (uint64, string) {
-	return uint64(id), data
+func echo(data string) (uint64, string) {
+	sdk.Log(sdk.NoLevel, data+"_nolevel")
+	return 0, data
 }
