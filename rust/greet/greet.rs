@@ -6,7 +6,7 @@ pub unsafe extern "C" fn _init() {
     jobicolet::ON_EVENT = Some(mytest)
 }
 
-fn mytest(id:u32, a:&String)->(u64, String){
-    jobicolet::log(id, 0, a);
-    return (100, ["Hello, from a rusty script!"].concat())
+fn mytest(a:&String)->(u64, String){
+    jobicolet::log(0, a);
+    return (0, ["Hello, from a rusty script!"].concat())
 }
