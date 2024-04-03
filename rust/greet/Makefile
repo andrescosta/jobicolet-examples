@@ -1,22 +1,21 @@
-## Dependencies WSL ():
-## curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-## cc: sudo apt install build-essential
-## cargo install wasm-pack
-## rustup target add wasm32-unknown-unknown
+.PHONE: build docker deploy undeploy test logs
 
-.PHONE: docker deploy undeploy test logs
+release: build docker deploy
+
+build:
+	cargo build --release --target wasm32-unknown-unknown
 
 docker:
 	docker cp target/wasm32-unknown-unknown/release/greet.wasm jobico-control-plane:/data/volumes/pv1/wasm
 
-deploy:
+job:
 	kubectl apply -f k8s-greet.yml
 
-undeploy: 
+job-delete: 
 	kubectl delete -f k8s-greet.yml
 
 test:
 	./ev-k8s.sh
 
 logs:
-	kubectl logs -f $(pod)
+	kubectl logs -f -l 'app=exec, owner=job-for-rust'
