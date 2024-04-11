@@ -12,6 +12,19 @@ Dependencies WSL:
 
 # Deploying Jobico
 
+git clone https://github.com/andrescosta/jobicok8s.git
+cd jobicok8s
+make kind
+wait certificates
+make deploy-all
+
+git clone https://github.com/andrescosta/jobicolet-examples
+
+cd jobicolet-examples/rust/greet
+make release
+make test
+make logs
+
 # Test:
 
 1- Compile

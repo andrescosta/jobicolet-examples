@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schema-g
+data:
+  schema-g.json: |
+    {
+      "type": "object",
+      "properties": {
+          "firstName": {
+              "type": "string"
+          },
+          "lastName": {
+              "type": "string"
+          },
+          "age": {
+              "type": "integer"
+          }
+      },
+      "required": ["firstName", "lastName"]
+    }
+  
+---
+apiVersion: jobico.coeux.dev/v1
+kind: Job
+metadata:
+  name: job-for-go
+spec:
+  events:
+    - name: ggo
+      wasm: greet-go.wasm
+      schema:
+        key: schema-g

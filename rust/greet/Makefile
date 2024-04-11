@@ -1,6 +1,6 @@
 .PHONE: build docker deploy undeploy test logs
 
-release: build docker deploy
+release: build docker job
 
 build:
 	cargo build --release --target wasm32-unknown-unknown
